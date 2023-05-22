@@ -42,8 +42,8 @@ GxEPD2_BW<GxEPD2_290, GxEPD2_290::HEIGHT> display(GxEPD2_290(/*CS=D8*/ SS, /*DC=
 // the size is increased in setPartialWindow() if x or w are not multiple of 8 for even rotation, y or h for odd rotation
 // see also comment in GxEPD2_BW.h, GxEPD2_3C.h or GxEPD2_GFX.h for method setPartialWindow()
 
-const char* ssid = "Honor-zhao";
-const char* pswd = "zhouQian2";
+const char* ssid = "XXXX";
+const char* pswd = "XXXX";
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp1.aliyun.com"); // udp，服务器地址，时间偏移量，更新间隔
