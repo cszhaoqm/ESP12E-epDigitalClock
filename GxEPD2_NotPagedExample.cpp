@@ -42,8 +42,8 @@ GxEPD2_BW<GxEPD2_290, GxEPD2_290::HEIGHT> display(GxEPD2_290(/*CS=D8*/ SS, /*DC=
 // the size is increased in setPartialWindow() if x or w are not multiple of 8 for even rotation, y or h for odd rotation
 // see also comment in GxEPD2_BW.h, GxEPD2_3C.h or GxEPD2_GFX.h for method setPartialWindow()
 
-const char* ssid = "XXXX";
-const char* pswd = "XXXX";
+const char* ssid = "Honor-zhao";
+const char* pswd = "zhouQian2";
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp1.aliyun.com"); // udp，服务器地址，时间偏移量，更新间隔
@@ -116,7 +116,7 @@ void showFullScreen()
   display.print("Impossible is nothing!");
   // end
 
-  display.drawLine(0, display.height() / 8, display.width(), display.height() / 8, GxEPD_BLACK);
+  display.drawLine(0, 16, display.width(), 16, GxEPD_BLACK);
   display.drawLine(0, 108, display.width(), 108, GxEPD_BLACK);
 
   display.display(false);       // full update
@@ -140,10 +140,10 @@ void showPartialTime()
   uint16_t x = ((display.width() - tbw) / 2) - tbx;
   uint16_t y = ((display.height() - tbh) / 2) - tby;
 
-  display.fillRect(0, 16, 296, 88, GxEPD_WHITE);
+  display.fillRect(0, 24, 296, 80, GxEPD_WHITE);
   display.setCursor(x, y);
   display.print(strTime);
-  display.displayWindow(0, 16, 296, 88);
+  display.displayWindow(0, 24, 296, 80);
 }
 
 void setup_wifi()
@@ -191,10 +191,10 @@ void loop()
   ESP.wdtFeed(); // 喂狗
   if (((millis() - lastTimeHeartBeat) > 60 * 1000))
   {
-    if (gtm_Minute == 59)
-        showFullScreen();
+    if ((gtm_Minute % 10) == 0)
+      showFullScreen();
     else
-        showPartialTime();
+      showPartialTime();
     display.powerOff();
 
     lastTimeHeartBeat = millis();
